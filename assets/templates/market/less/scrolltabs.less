@@ -1,0 +1,73 @@
+.scroll_tabs_container {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  height: 52px;
+  margin-bottom: 20px;
+
+  text-align: left;
+
+  div.scroll_tab_inner {
+    right: 0 !important;
+    left: 0 !important;
+
+    @media all and (max-width: 1024px) {
+      overflow-x: auto !important;
+    }
+  }
+
+  .scroll_tab_left_button,
+  .scroll_tab_right_button {
+    z-index: 2;
+
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    background-color: #ffffff;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .scroll_tab_left_button {
+    border-right: 1px solid #ededed;
+  }
+
+  .scroll_tab_right_button {
+    border-left: 1px solid #ededed;
+  }
+
+  .scroll_tab_left_button::before,
+  .scroll_tab_right_button::before {
+    display: block;
+
+    font-size: 20px;
+    line-height: normal;
+    font-family: FontAwesome;
+    color: #989898;
+  }
+
+  .scroll_tab_left_button::before {
+    content: "\f104";
+  }
+
+  .scroll_tab_right_button::before {
+    content: "\f105";
+
+    padding-left: 13px;
+  }
+
+  .scroll_tab_left_button_disabled,
+  .scroll_tab_right_button_disabled {
+    display: none !important;
+  }
+
+  .scroll_tab_right_button:hover::before,
+  .scroll_tab_left_button:hover::before {
+    color: @primary-color;
+  }
+}
