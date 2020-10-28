@@ -57,7 +57,7 @@
   background: darken(#19c978, 15%);
 }
 
-form input[type="submit"]:disabled {
+form input[type='submit']:disabled {
   cursor: default;
   opacity: 0.7;
 }
@@ -204,7 +204,7 @@ ol:not(.ordered-list-dots) {
     padding-left: 20px;
 
     &::before {
-      content: counters(section, ".") ".";
+      content: counters(section, '.') '.';
       position: absolute;
       top: 0;
       left: 0;
@@ -221,7 +221,7 @@ ol {
 
 .partners-slider {
   padding: 40px 0;
-  
+
   &.gray-bg {
     background-color: @main-section-bg;
   }
@@ -229,7 +229,7 @@ ol {
   .certificates .company-logo {
     margin: 0;
   }
-  
+
   .company-logo {
     // margin: 48px 0;
   }
@@ -418,6 +418,27 @@ body .sorting-catalog-view .quantity a.active:hover {
 /*.left-bar.uk-hidden-small{
   display: block !important;
 }*/
+.left-bar {
+  position: relative;
+  &__banners-wrap {
+    height: max-content;
+    // position: sticky;
+    // position: fixed;
+    // top: 52px;
+
+    &.fixed {
+      position: fixed;
+      // position: absolute;
+      width: 273px;
+      bottom: 0;
+    }
+
+    &.absolute {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
 
 .wrap-product-data.order .buy-block {
   display: none;
@@ -474,7 +495,6 @@ body .sorting-catalog-view .quantity a.active:hover {
 
 .select2-results li {
   width: max-content;
-
 }
 
 .top-bar .header__phone span {
@@ -548,7 +568,7 @@ body .sorting-catalog-view .quantity a.active:hover {
   width: 56px;
   height: 51px;
 
-  background: url("../img/update/side-favorits__label.svg") 50% 50% @primary-color no-repeat;
+  background: url('../img/update/side-favorits__label.svg') 50% 50% @primary-color no-repeat;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
   // border-top-left-radius: 5px;
@@ -559,7 +579,7 @@ body .sorting-catalog-view .quantity a.active:hover {
 }
 
 #favorits_cnt {
-  content: "";
+  content: '';
   position: absolute;
   top: 6px;
   right: 6px;
@@ -611,7 +631,7 @@ body .sorting-catalog-view .quantity a.active:hover {
   width: 56px;
   height: 51px;
 
-  background: url("../img/update/side-compare__label.svg") 50% 50% @primary-color no-repeat;
+  background: url('../img/update/side-compare__label.svg') 50% 50% @primary-color no-repeat;
 
   // border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -622,7 +642,7 @@ body .sorting-catalog-view .quantity a.active:hover {
 }
 
 #compare_cnt {
-  content: "";
+  content: '';
   position: absolute;
   top: 6px;
   right: 6px;

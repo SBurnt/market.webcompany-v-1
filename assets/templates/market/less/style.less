@@ -2051,6 +2051,84 @@ input.datepicker-form {
   color: #000000;
 }
 
+.consultation {
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 49px;
+
+    border: 1px solid #ededed;
+
+    // border: 1px solid red;
+    border-radius: 1px;
+
+    &.fixed {
+      position: fixed;
+
+      // bottom: 20px;
+      top: 55px;
+
+      width: inherit;
+    }
+  }
+
+  &__img {
+    margin-bottom: 31px;
+
+    path {
+      fill: @primary-color;
+    }
+  }
+
+  &__question {
+    margin-bottom: 10px;
+    padding: 0 34px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #333333;
+  }
+
+  &__question-description {
+    margin-bottom: 20px;
+    padding: 0 34px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
+    color: #333333;
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 15px 0;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #767676;
+    text-transform: uppercase;
+
+    border-top: 1px solid #ededed;
+
+    // border-top: 1px solid red;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+
+      background-color: @primary-btn;
+      // background-color: #f82900;
+    }
+  }
+}
+
 /*Ядро*/
 @import "header/header";
 @import "search";
