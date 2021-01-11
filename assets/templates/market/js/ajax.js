@@ -127,22 +127,22 @@ $(document).ready(function () {
                 z = '';
             }
 
-            var endd = $('#ajax_stop').val();  
+            var endd = $('#ajax_stop').val();
 
             // высота элемента если отключили "наличие и артикул" в разделе товаров каталога
             function noArticleAvail() {
                 const windowInnerWidth = document.documentElement.clientWidth;
                 const articleAvailability = document.querySelector(".article-and-availability");
-              
+
                 if (articleAvailability && windowInnerWidth > 1200) {
-                  const availability = document.querySelector(".article-and-availability .availability");
-                  const article = document.querySelector(".article-and-availability .article");
-              
-                  if (!availability & !article) {
-                    $(".outside-product").addClass("not-article-and-availability");
-                  } else {
-                    $(".outside-product").removeClass("not-article-and-availability");
-                  }
+                    const availability = document.querySelector(".article-and-availability .availability");
+                    const article = document.querySelector(".article-and-availability .article");
+
+                    if (!availability & !article) {
+                        $(".outside-product").addClass("not-article-and-availability");
+                    } else {
+                        $(".outside-product").removeClass("not-article-and-availability");
+                    }
                 }
             }
 
@@ -1734,7 +1734,7 @@ $(document).ready(function () {
                                 , e = this.dataset.id
                                 , ajax_url = this.dataset.url;
 
-                            if(ajax_url == '' || ajax_url == undefined){
+                            if (ajax_url == '' || ajax_url == undefined) {
                                 ajax_url = window.location.href
                             }
 
@@ -1856,3 +1856,375 @@ $('body').on('submit', '#eFiltr', function (event) {
     }
 });
 });*/
+
+
+/*form form_authorization (Всплывающая форма Авторизация)*/
+
+function ajax_authorization_alert(response) {
+    var o_response = JSON.parse(response);
+    sweetAlert({
+        'title': o_response.title,
+        'text': o_response.text,
+        'type': o_response.type,
+        'timer': 5000
+    });
+    if(o_response.redirect != '' && o_response.redirect != undefined){
+        setTimeout(function () {
+            document.location.href = o_response.redirect;
+        }, 5000);
+    }
+}
+
+function clos_clear_authorization() {
+    var form_select = $('#form_authorization');
+    form_select.find('input').removeClass("error");
+    form_select.find('input[type="text"],input[type="password"],').val('');
+}
+
+
+$(document).ready(function () {
+    $(document).on('click', '#authorization .uk-modal-close', function () {
+        clos_clear_authorization();
+    });
+
+    $('#form_authorization input').focus(function () {
+        $(this).removeClass("error");
+    });
+
+    $('#form_authorization input[name="email"]').blur(function () {
+        var s1 = $(this).val();
+        $(this).removeClass("error");
+        if ((s1.length < 3) || (s1.length >= 60)) {
+            $(this).addClass("error");
+        }
+    });
+
+    $('#form_authorization input[name="password"]').blur(function () {
+        var s5 = $(this).val();
+        $(this).removeClass("error");
+        if (s5.length < 2 && s5 != '') {
+            $(this).addClass("error");
+        }
+    });
+
+    $('#form_authorization').submit(function (event) {
+        event.preventDefault();
+        var form_select = $(this);
+        var regphone = /(\+)?([-\._\(\) ]?[\d]{2,20}[-\._\(\) ]?){2,10}/;
+        var regname = /^[а-яА-ЯёЁa-zA-Z -]+$/;
+        var regmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+        var valid = false;
+
+        form_select.find('input,textarea').removeClass("error");
+
+        var s1 = form_select.find('input[name="email"]').val();
+        var s2 = form_select.find('input[name="password"]').val();
+        var s3 = form_select.find('input[name="email_back"]').val();
+
+        if (((s1.length >= 3) && (s1.length < 60)) && (s3.length === 0) && (s2.length > 2 || s2 == '')) {
+            valid = true;
+        } else {
+            if ((s1.length < 3) || (s1.length >= 60)) {
+                form_select.find('input[name="email"]').addClass("error");
+            }
+
+            if (s3.length !== 0) {
+                $('#answer h2').html("Спам!!!");
+            }
+
+            if (s2.length <= 2 && s2 != '') {
+                form_select.find('textarea[name="message"]').addClass("error");
+            }
+
+        }
+        if (valid === true) {
+            var z = form_select.serialize();
+            var a_url = form_select.attr('action');
+            form_authorization_ajax(z, a_url);
+        }
+    });
+});
+
+function form_authorization_ajax(val, url_ajax) {
+    $.ajax({
+        type: "POST",
+        url: url_ajax,
+        data: val,
+        error: function (xhr) {
+            ajax_error(xhr)
+        },
+        success: function (response) {
+            ajax_authorization_alert(response);
+            setTimeout(function () {
+                $("#authorization .uk-modal-close").trigger('click');
+            }, 5000);
+        }
+    });
+}
+
+
+//Регистрация
+function clos_clear_registration() {
+    var form_select = $('#form_registration');
+    form_select.find('input').removeClass("error");
+    form_select.find('input[type="text"],input[type="password"],').val('');
+}
+
+
+$(document).ready(function () {
+
+    $('#form_registration').submit(function (event) {
+        event.preventDefault();
+        var form_select = $(this);
+        var regphone = /(\+)?([-\._\(\) ]?[\d]{2,20}[-\._\(\) ]?){2,10}/;
+        var regname = /^[а-яА-ЯёЁa-zA-Z -]+$/;
+        var regmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+        var valid = false;
+
+        form_select.find('input,textarea').removeClass("error");
+
+        var s1 = form_select.find('input[name="registerLogin"]').val();
+        var s2 = form_select.find('input[name="registerPassword"]').val();
+        var s3 = form_select.find('input[name="email_back"]').val();
+
+        if (((s1.length >= 3) && (s1.length < 60)) && (s3.length === 0) && (s2.length > 2 || s2 == '')) {
+            valid = true;
+        } else {
+            if ((s1.length < 3) || (s1.length >= 60)) {
+                form_select.find('input[name="registerLogin"]').addClass("error");
+            }
+
+            if (s3.length !== 0) {
+                $('#answer h2').html("Спам!!!");
+            }
+
+            if (s2.length <= 2 && s2 != '') {
+                form_select.find('input[name="registerPassword"]').addClass("error");
+            }
+
+        }
+        if (valid === true) {
+            var z = form_select.serialize();
+            var a_url = form_select.attr('action');
+            form_registration_ajax(z, a_url);
+        }
+    });
+});
+
+function form_registration_ajax(val, url_ajax) {
+    $.ajax({
+        type: "POST",
+        url: url_ajax,
+        data: val,
+        error: function (xhr) {
+            ajax_error(xhr)
+        },
+        success: function (response) {
+            ajax_authorization_alert(response);
+            setTimeout(function () {
+                clos_clear_registration();
+            }, 5000);
+        }
+    });
+}
+
+//Восстановление пароля
+function clos_clear_recover() {
+    var form_select = $('#form_recover');
+    form_select.find('input').removeClass("error");
+    form_select.find('input[type="text"],input[type="password"]').val('');
+}
+
+
+$(document).ready(function () {
+
+    $('#form_recover').submit(function (event) {
+        event.preventDefault();
+        var form_select = $(this);
+        var regphone = /(\+)?([-\._\(\) ]?[\d]{2,20}[-\._\(\) ]?){2,10}/;
+        var regname = /^[а-яА-ЯёЁa-zA-Z -]+$/;
+        var regmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+        var valid = false;
+
+        form_select.find('input,textarea').removeClass("error");
+
+        var s1 = form_select.find('input[name="profilePass"]').val();
+        var s2 = form_select.find('input[name="profilePassRepeat"]').val();
+
+        if ((s1.length >= 6 ) && (s2.length >= 6)) {
+            valid = true;
+        } else {
+            if (s1.length < 6 ) {
+                form_select.find('input[name="profilePass"]').addClass("error");
+            }
+
+            if (s2.length < 6 ) {
+                form_select.find('input[name="profilePassRepeat"]').addClass("error");
+            }
+
+            /*if (s1 != s2) {
+                form_select.find('input[name="profilePass"]').addClass("error");
+                form_select.find('input[name="profilePassRepeat"]').addClass("error");
+            }*/
+        }
+        if (valid === true) {
+            var z = form_select.serialize();
+            var a_url = form_select.attr('action');
+            form_recover_ajax(z, a_url);
+        }
+    });
+});
+
+function form_recover_ajax(val, url_ajax) {
+    $.ajax({
+        type: "POST",
+        url: url_ajax,
+        data: val,
+        error: function (xhr) {
+            ajax_error(xhr)
+        },
+        success: function (response) {
+            ajax_authorization_alert(response);
+            setTimeout(function () {
+                clos_clear_recover();
+            }, 5000);
+        }
+    });
+}
+
+//Изменение данных в личном кабинете
+function clos_clear_profile() {
+    var form_select = $('#profileForm');
+    form_select.find('input').removeClass("error");
+    form_select.find('input[type="text"],input[type="password"]').val('');
+}
+
+
+$(document).ready(function () {
+
+    $('#profileForm').submit(function (event) {
+
+        event.preventDefault();
+        var form_select = $(this);
+        var regphone = /(\+)?([-\._\(\) ]?[\d]{2,20}[-\._\(\) ]?){2,10}/;
+        var regname = /^[а-яА-ЯёЁa-zA-Z -]+$/;
+        var regmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+        var valid = false;
+
+        form_select.find('input,textarea').removeClass("error");
+
+        var s1 = form_select.find('input[name="profileUsername"]').val();
+        var s2 = form_select.find('input[name="profileName"]').val();
+        var s3 = form_select.find('input[name="profilePhone"]').val();
+        var s4 = form_select.find('input[name="profileEmail"]').val();
+
+
+        if ((s1.length > 0 ) && (s2.length > 0) && (s3.length > 0) && (s4.length > 0)) {
+            valid = true;
+        } else {
+            if (s1.length = 0) {
+                form_select.find('input[name="profileUsername"]').addClass("error");
+            }
+
+            if (s2.length = 0) {
+                form_select.find('input[name="profileName"]').addClass("error");
+            }
+
+            if (s3.length = 0) {
+                form_select.find('input[name="profilePhone"]').addClass("error");
+            }
+
+            if (s4.length = 0) {
+                form_select.find('input[name="profileEmail"]').addClass("error");
+            }
+        }
+        if (valid === true) {
+            var z = form_select.serialize();
+            var a_url = form_select.attr('action');
+            form_profile_ajax(z, a_url);
+        }
+    });
+});
+
+function form_profile_ajax(val, url_ajax) {
+    $.ajax({
+        type: "POST",
+        url: url_ajax,
+        data: val,
+        error: function (xhr) {
+            ajax_error(xhr)
+        },
+        success: function (response) {
+            ajax_authorization_alert(response);
+        }
+    });
+}
+
+
+//Восстановление пароля по email
+function clos_clear_recover_mail() {
+    var form_select = $('#form_recover_mail');
+    form_select.find('input').removeClass("error");
+    form_select.find('input[type="text"],input[type="email"]').val('');
+}
+
+
+$(document).ready(function () {
+
+    $('#form_recover_mail input').focus(function () {
+        $(this).removeClass("error");
+    });
+
+    $('#form_recover_mail input[name="email"]').blur(function () {
+        var regmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+        var s3 = $(this).val();
+        $(this).removeClass("error");
+        if (!regmail.test(s3)) {
+            $(this).addClass("error");
+        }
+    });
+
+    $('#form_recover_mail').submit(function (event) {
+        event.preventDefault();
+        var form_select = $(this);
+        var regphone = /(\+)?([-\._\(\) ]?[\d]{2,20}[-\._\(\) ]?){2,10}/;
+        var regname = /^[а-яА-ЯёЁa-zA-Z -]+$/;
+        var regmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+        var valid = false;
+
+        form_select.find('input,textarea').removeClass("error");
+
+        var s1 = form_select.find('input[name="recoverEmail"]').val();
+
+        if (regmail.test(s1)) {
+            valid = true;
+        } else {
+            if (!regmail.test(s1)) {
+                form_select.find('input[name="recoverEmail"]').addClass("error");
+            }
+
+        }
+        if (valid === true) {
+            var z = form_select.serialize();
+            var a_url = form_select.attr('action');
+            form_recover_mail_ajax(z, a_url);
+        }
+    });
+});
+
+function form_recover_mail_ajax(val, url_ajax) {
+    $.ajax({
+        type: "POST",
+        url: url_ajax,
+        data: val,
+        error: function (xhr) {
+            ajax_error(xhr)
+        },
+        success: function (response) {
+            ajax_authorization_alert(response);
+            setTimeout(function () {
+                clos_clear_recover_mail();
+            }, 5000);
+        }
+    });
+}

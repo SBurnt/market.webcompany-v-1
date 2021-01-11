@@ -14,7 +14,7 @@
 
   // https://market.webcompany.by/services/buhgalterskie-uslugi/ekspertiza-buhgalterskogo-ucheta.html
   &.if-no_left_bar-w-100 {
-  // &.ekspertiza-buhgalterskogo-ucheta {
+    // &.ekspertiza-buhgalterskogo-ucheta {
     justify-content: center;
     .uk-width-medium-3-4 {
       width: 75%;
@@ -61,6 +61,18 @@
 
     @media screen and (max-width: 640px) {
       width: 100%;
+    }
+
+    @media screen and (min-width: 1200px) {
+      &:hover {
+        .completed-project-content__title {
+          padding-top: 0;
+        }
+
+        p {
+          padding: 0;
+        }
+      }
     }
   }
 
@@ -188,13 +200,13 @@
 
       border: 1px solid #ededed;
 
-      // border: 1px solid red;
+// border: 1px solid red;
       border-radius: 1px;
 
       &.fixed {
         position: fixed;
 
-        // bottom: 20px;
+// bottom: 20px;
         top: 55px;
 
         width: inherit;
@@ -244,7 +256,7 @@
 
       border-top: 1px solid #ededed;
 
-      // border-top: 1px solid red;
+// border-top: 1px solid red;
       cursor: pointer;
 
       &:hover {

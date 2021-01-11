@@ -63,6 +63,22 @@
     justify-content: flex-start;
     margin-top: 20px;
     margin-right: -10px;
+
+    &.one-line-el {
+      .services__item {
+        overflow: hidden;
+
+        img {
+          transition: transform 0.3s ease;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
   }
   &__text {
     display: inline-block;

@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
 
 
-    //mobile-menu
+//mobile-menu
 
     /*main-menu*/
 
@@ -67,16 +67,23 @@ $(document).ready(function () {
 
     /**/
 
+// noinspection JSAnnotator
+    var auto_mode = $('.bx-slider').data('auto_mode');
+
+    if (auto_mode == 1) {
+        var auto = true;
+    } else {
+        var auto = false;
+    }
+
+    var pause = $('.bx-slider').data('pause');
+
+
     $('.bx-slider').bxSlider({
-
-        // auto: true,
-
-        // autoHover: true,
-
-        // speed: 800,
-
-        // pause: 5000
-
+        auto: auto,
+        autoHover: true,
+        speed: 800,
+        pause: pause
     });
 
 
@@ -316,7 +323,7 @@ $(document).ready(function () {
 
     owl2.owlCarousel();
 
-    // Go to the next item
+// Go to the next item
 
     $('.customNextBtn').click(function () {
 
@@ -324,7 +331,7 @@ $(document).ready(function () {
 
     });
 
-    // Go to the previous item
+// Go to the previous item
 
     $('.customPrevBtn').click(function () {
 
@@ -388,7 +395,7 @@ $(document).ready(function () {
 
     owl3.owlCarousel();
 
-    // Go to the next item
+// Go to the next item
 
     $('.slider-sale-wrap .customNextBtn').click(function () {
         console.log('test');

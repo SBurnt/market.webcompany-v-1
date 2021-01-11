@@ -3735,7 +3735,7 @@ $(document).ready(function () {
     },
   };
 
-  $('input[name="phone"]').inputmasks(maskOpts);
+  $('input[name="phone"],input[name="registerPhone"],input[name="profilePhone"]').inputmasks(maskOpts);
 });
 
 //высота элементов каталога
@@ -4393,19 +4393,19 @@ function scrollLeftBarBanners() {
       // window.innerHeight - bounds.top > 0 // Выше нижней
     );
   }
+
   var el = document.querySelector('.left-bar__banners-wrap');
   var el2 = $('.left-bar__banners-wrap');
 
   let wrapper = $('.left-bar');
-  let menu = $('.main-menu-left')
+  let menu = $('.main-menu-left');
   let foot = $('.footer');
-  let hei = wrapper.outerHeight() - menu.outerHeight()
+  let hei = wrapper.outerHeight() - menu.outerHeight();
   console.log('foot.offset().top ', foot.offset().top);
   console.log('hei ', hei);
   console.log('summ ', foot.offset().top - $(window).height());
   console.log('el2.outerHeight() ', el2.outerHeight());
   console.log('$(window).height() ', $(window).height());
-
 
   document.addEventListener('scroll', (e) => {
     var inViewport = elementInViewport(el);
