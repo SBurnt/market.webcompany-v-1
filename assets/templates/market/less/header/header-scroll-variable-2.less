@@ -1,141 +1,191 @@
-.header-scroll.header-variable-2 {
-  right: 0;
-  left: 0;
+.header-scroll {
+  &.header-variable-2 {
+    right: 0;
+    left: 0;
 
-  -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  -webkit-transform: translateZ(0);
+    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateZ(0);
 
-  -webkit-transition: all 0s;
-  -o-transition: all 0s;
-  transition: all 0s;
+    -webkit-transition: all 0s;
+         -o-transition: all 0s;
+            transition: all 0s;
 
-  .logo {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-right: 29px;
-    img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
-
-  .header-top-right-block {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-
-    border-right: 1px solid #e5e5e5;
-    border-left: 1px solid #e5e5e5;
-  }
-
-  .header-basket {
-    width: 60px;
-    margin-right: 0;
-    margin-left: 0;
-
-    border-left: 1px solid #e5e5e5;
-
-    a {
-      width: 100%;
-    }
-  }
-
-  .header-basket__count {
-    top: 7px;
-    right: 7px;
-    left: auto;
-  }
-
-  .header-scroll__search-btn {
-    display: inline-block;
-    width: 60px;
-    height: 52px;
-
-    background: url("../img/magnifier.png") 50% 50% no-repeat;
-    cursor: pointer;
-  }
-
-  .flexMenu-viewMore {
-    > a {
-      color: #333333;
-    }
-    &::after {
-      display: none;
-    }
-  }
-
-  .desktop-menu {
-    .menu {
-      > li {
-        > a {
-          padding-top: 17px;
-          padding-bottom: 16px;
-        }
+    .logo {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      margin-right: 29px;
+      img {
+        max-width: 100%;
+        max-height: 100%;
       }
-      .active {
-        > a {
-          color: #ffffff;
+    }
 
-          opacity: 1;
-        }
-      }
+    .header-top-right-block {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display:         flex;
+
+      border-right: 1px solid #e5e5e5;
+      border-left: 1px solid #e5e5e5;
+    }
+
+    .header-basket {
+      width: 60px;
+      margin-right: 0;
+      margin-left: 0;
+
+      border-left: 1px solid #e5e5e5;
+
       a {
+        width: 100%;
+      }
+    }
+
+    .header-basket__count {
+      top: 7px;
+      right: 7px;
+      left: auto;
+    }
+
+    .header-scroll__search-btn {
+      display: inline-block;
+      width: 60px;
+      height: 52px;
+
+      background: url("../img/magnifier.png") 50% 50% no-repeat;
+      cursor: pointer;
+    }
+
+    .flexMenu-viewMore {
+      > a {
         color: #333333;
       }
+      &::after {
+        display: none;
+      }
+    }
+
+    .desktop-menu {
+      .menu {
+        > li {
+          > a {
+            padding-top: 17px;
+            padding-bottom: 16px;
+          }
+        }
+        .active {
+          > a {
+            color: #ffffff;
+
+            opacity: 1;
+          }
+        }
+        a {
+          color: #333333;
+        }
+      }
+    }
+
+    .header-top-left-block {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display:         flex;
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+              flex-grow: 1;
+    }
+
+    .header-variable-2__nav {
+      padding-left: 14px;
+
+      border-left: 1px solid #e5e5e5;
+
+      .menu {
+        > .nav-arrow {
+          &:hover::after {
+            color: #ffffff;
+          }
+
+          &::after {
+            content: "\f107";
+            position: absolute;
+            top: 20px;
+            right: 11px;
+
+            font-size: 14px;
+            font-family: FontAwesome;
+            color: #333333;
+          }
+          &.active::after {
+            color: #ffffff;
+          }
+        }
+        > li:hover {
+          ul {
+            -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
     }
   }
 
-  .header-top-left-block {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-  }
+  &.header-variable-2-2 {
+    background-color: @primary-color;
 
-  .header-variable-2__nav {
-    padding-left: 14px;
+    .desktop-menu .menu > .level1 > a,
+    .desktop-menu .menu > .nav-arrow::after,
+    .desktop-menu .menu > .nav-arrow:hover::after,
+    .desktop-menu .menu > .flexMenu-viewMore > a {
+      color: #ffffff !important;
+    }
 
-    border-left: 1px solid #e5e5e5;
+    .header-scroll__search-btn {
+      background: url(../img/update/header-magnifier-white.svg) 50% 50% no-repeat;
+    }
 
-    .menu {
-      > .nav-arrow {
-        &:hover::after {
-          color: #ffffff;
-        }
+    .header-basket {
+      background: url(../img/update/header-basket-white.svg) 50% 50% no-repeat;
+    }
 
-        &::after {
-          content: "\f107";
-          position: absolute;
-          top: 20px;
-          right: 11px;
+    .header-basket__count {
+      background-color: #424242;
+    }
 
-          font-size: 14px;
-          font-family: FontAwesome;
-          color: #333333;
-        }
-        &.active::after {
-          color: #ffffff;
-        }
-      }
-      > li:hover {
-        ul {
-          -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-        }
-      }
+    #Ellipse4__logo-new path {
+      fill: #ffffff;
+    }
+
+    #Rectangle42_2__logo-new path,
+    #Rectangle42__logo-new path {
+      fill: @primary-color;
+    }
+
+    #Vector_2__logo-new path,
+    #Vector__logo-new path,
+    #Vector_3____logo-new path,
+    #Vector_4____logo-new path,
+    #Vector_5__logo-new path,
+    #Vector_6__logo-new path,
+    #Vector_7__logo-new path {
+      fill: #ffffff;
+    }
+
+    .logo-sign {
+      color: #ffffff;
     }
   }
 }
+
+
 
 #search-panel-top.fix {
   position: fixed;
