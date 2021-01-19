@@ -3424,9 +3424,11 @@ function sideBasket() {
       !$(e.target).closest('.side-basket').length &&
       !$(e.target).closest('#stuffHelper').length
     ) {
-      e.preventDefault();
+      // e.preventDefault();
 
       $('.side-basket').removeClass('show');
+      $('.side-favorits').removeClass('show');
+      $('.side-compare').removeClass('show');
 
       $('html').removeClass('side-basket-enabled');
 
@@ -3437,6 +3439,8 @@ function sideBasket() {
       e.preventDefault();
 
       $('.side-basket').removeClass('show');
+      $('.side-favorits').removeClass('show');
+      $('.side-compare').removeClass('show');
 
       $('html').removeClass('side-basket-enabled');
 
@@ -4426,3 +4430,36 @@ function scrollLeftBarBanners() {
     }
   });
 }
+
+/*Выбор опции высоты (торговые предложения)*/
+$(document).ready(function () {
+	$(document).on('click','.product_offering label.select-offering',function(){
+		var $self = $(this),
+			offering = $self.find('input').val(),
+			price = $self.find('input').attr('data-offeringPrice'),
+			slide_nmr = $self.find('input').attr('data-offeringslidenmr');
+		$('.main-first-info-wrap form.count-form input.offering_add').val(offering);
+		$('.main-first-info-wrap form.count-form input.offerprice_add').val(price);
+		price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+
+		var price_format = price + ' <span class="price_rub">руб.</span>';
+		$('.main-first-info-presence-wrap div.price p').html(price_format);
+		/*Для превью*/
+		$self.parents('div.element').find('form.count-form input.offering_add').val(offering);
+		$self.parents('div.element').find('form.count-form input.offerprice_add').val(price);
+		$self.parents('div.element').find('div.price p').html(price_format);
+		
+		slide_nmr = parseInt(slide_nmr, 10) - 1;
+		console.log('slide_nmr');
+		$('.main-first-image-slider').slick('slickGoTo', slide_nmr);
+	});
+
+});
+
+$(document).ready(function () {
+	$(document).on('click','.product_offering input.input-offering', function (event) {
+		var $self = $(this);
+		$self.parents('div.element').find('div.shk-item').removeClass('in-basket');
+		$('.main-first-info-wrap div.shk-item').removeClass('in-basket');
+	});
+});

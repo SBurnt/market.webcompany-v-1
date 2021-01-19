@@ -176,4 +176,39 @@
       fill: #fff;
     }
   }
+
+  .header-1_1_2 {
+    background-color: @primary-color;
+
+    .container.desktop .desktop-menu > .menu > li.active,
+    .container.desktop .desktop-menu > .menu > li:hover {
+      background-color: darken(@primary-color, 5%);
+    }
+
+    .container.desktop .desktop-menu .menu > .level1 > a {
+      color: #ffffff;
+    }
+
+    .container.desktop #menu-flex > .nav-arrow::after {
+      border-color: #fff transparent transparent transparent;
+    }
+
+    .container.desktop #menu-flex > .flexMenu-viewMore > a {
+      color: #ffffff;
+    }
+
+    .container.desktop #button-search-top {
+      background: url(../img/update/header-magnifier-white.svg) 50% 50% no-repeat;
+    }
+
+    @media (min-width: 1025px) {
+      .container.desktop .header-basket {
+        background: url(../img/update/header-basket-white.svg) 50% 50% no-repeat;
+      }
+
+      .container.desktop #shopCart #cartEmpty {
+        background-color: #424242;
+      }
+    }
+  }
 }

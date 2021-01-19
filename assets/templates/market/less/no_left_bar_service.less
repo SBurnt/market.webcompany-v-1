@@ -77,45 +77,80 @@
   }
 
   // список 4
-  // .completed-project-inner .completed-project-item {
-  //   width: calc(~"(100% / 3) - 1.754%");
-
-  //   @media screen and (max-width: 992px) {
-  //     width: 48.24%;
-  //   }
-
-  //   @media screen and (max-width: 640px) {
-  //     width: 100%;
-  //   }
-  // }
-
-  // список 5
-  .projects-page .completed-projects-slider-el-wrap {
-    .completed-projects-slider__img {
-      width: 48.3827%;
-      width: 37%;
+  .sale-page__wrap.service-4 {
+    @media screen and (min-width: 992px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
-    @media screen and (max-width: 767px) {
-      width: 100%;
+    .sale-page.uk-grid {
+      @media screen and (min-width: 992px) {
+        width: calc(~"(100% / 2) - 10px");
+        padding-bottom: 25px;
+
+        border-bottom: 1px solid #eeeeee;
+      }
+    }
+
+    .margin {
+      @media screen and (min-width: 992px) {
+        display: none;
+      }
     }
   }
 
-  // список 6
-  .projects-page.service-6 .completed-projects-slider-el-wrap {
-    .completed-projects-slider__img {
-      width: 48.3827%;
-      width: 37%;
+  // список 5, 6
+  .projects-page {
+    &.diluting-page {
+      @media screen and (min-width: 992px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+
+    .completed-projects-slider-el-wrap {
+      @media screen and (min-width: 992px) {
+        width: calc(~"(100% / 2) - 10px");
+      }
+      .completed-projects-slider__img {
+        width: 40%;
+        min-width: 200px;
+
+        @media screen and (max-width: 767px) {
+          width: 100%;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+
+          object-fit: cover;
+        }
+      }
 
       @media screen and (max-width: 767px) {
         width: 100%;
       }
     }
-
-    @media screen and (max-width: 767px) {
-      width: auto;
-    }
   }
+
+  // // список 6
+  // .projects-page.service-6 .completed-projects-slider-el-wrap {
+  //   .completed-projects-slider__img {
+  //     // width: 48.3827%;
+  //     width: 37%;
+
+  //     @media screen and (max-width: 767px) {
+  //       width: 100%;
+  //     }
+  //   }
+
+  //   @media screen and (max-width: 767px) {
+  //     width: auto;
+  //   }
+  // }
 
   // список 7, каталог->бытовая техника
   .information-main.information-main-page .news .news-element {
