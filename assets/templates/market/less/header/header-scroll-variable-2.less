@@ -141,11 +141,29 @@
   &.header-variable-2-2 {
     background-color: @primary-color;
 
+    .header-variable-2__nav,
+    .header-basket {
+      border-left: 1px solid rgba(230, 230, 230, 0.5);
+    }
+
+    .header-top-right-block {
+      border-left: 1px solid rgba(230, 230, 230, 0.5);
+      border-right: 1px solid rgba(230, 230, 230, 0.5);
+    }
+
     .desktop-menu .menu > .level1 > a,
     .desktop-menu .menu > .nav-arrow::after,
     .desktop-menu .menu > .nav-arrow:hover::after,
     .desktop-menu .menu > .flexMenu-viewMore > a {
       color: #ffffff !important;
+    }
+
+    .desktop-menu .menu > li:hover:not(.active) {
+      background-color: darken(@primary-color, 5%);
+    }
+
+    .desktop-menu .menu > li.active {
+      background-color: darken(@primary-color, 5%);
     }
 
     .header-scroll__search-btn {

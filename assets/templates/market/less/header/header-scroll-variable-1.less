@@ -214,7 +214,7 @@
 
       font-weight: 600;
       font-size: 1rem;
-      line-height: 31px;
+      line-height: 30px;
       text-align: center;
       color: @primary-btn;
       // text-transform: uppercase;
@@ -265,11 +265,14 @@
 
     .header-scroll-main-menu .flexMenu-viewMore:not(.active) > a {
       color: #ffffff;
+
+      border-right: 1px solid rgba(230, 230, 230, 0.5);
+      border-left: 1px solid rgba(230, 230, 230, 0.5);
     }
 
     .header-scroll-main-menu .flexMenu-viewMore.active > a {
-      border-right: 1px solid #e5e5e5;
-      border-left: 1px solid #e5e5e5;
+      border-right: 1px solid rgba(230, 230, 230, 0.5);
+      border-left: 1px solid rgba(230, 230, 230, 0.5);
     }
 
     .header-scroll-main-menu .flexMenu-viewMore {
@@ -278,6 +281,10 @@
 
     .header-scroll-main-menu .flexMenu-viewMore:hover {
       background-color: darken(@primary-color, 5%);
+    }
+
+    .header-phone-wrap {
+      border-left: 1px solid rgba(230, 230, 230, 0.5);
     }
 
     .header__phone {
@@ -299,11 +306,22 @@
     }
 
     .header-variable__lnk {
+      color: @primary-color;
+
       background-color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .header-variable__lnk:hover {
+      color: #ffffff;
+
+      background-color: darken(@primary-color, 5%);
     }
 
     .header-basket {
       background: url(../img/update/header-basket-white.svg) 50% 50% no-repeat;
+      border-right: 1px solid rgba(230, 230, 230, 0.5);
+      border-left: 1px solid rgba(230, 230, 230, 0.5);
     }
 
     .header-basket__count {
